@@ -1,5 +1,5 @@
 # lib/models/article.py
-import sqlite3
+
 from . import get_connection
 
 class Article:

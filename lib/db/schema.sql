@@ -1,20 +1,20 @@
--- lib/db/schema.sql
-DROP TABLE IF EXISTS articles;
-DROP TABLE IF EXISTS authors;
-DROP TABLE IF EXISTS magazines;
+-- schema.sql
+
 CREATE TABLE IF NOT EXISTS authors (
-    id INTEGER PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS magazines (
-    id INTEGER PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    category TEXT
 );
 
 CREATE TABLE IF NOT EXISTS articles (
-    id INTEGER PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    content TEXT,
     author_id INTEGER,
     magazine_id INTEGER,
     FOREIGN KEY (author_id) REFERENCES authors(id),

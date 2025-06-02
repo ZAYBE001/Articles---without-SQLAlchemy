@@ -1,19 +1,11 @@
-# scripts/setup_db.py
+# setup_db.py
 import sqlite3
-from lib.db.connection import get_connection
-from lib.db.seed import seed_data
 
-def setup_db():
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    with open('lib/db/schema.sql', 'r') as f:
-        cursor.executescript(f.read())
-
-    conn.commit()
+def initialize_database():
+    conn = sqlite3.connect("magazine.db")
+    with open("schema.sql") as f:
+        conn.executescript(f.read())
     conn.close()
 
-    seed_data()
-
 if __name__ == "__main__":
-    setup_db()
+    initialize_database()
